@@ -1,3 +1,3 @@
 # Yuvie
 
-Flutter FE moviedb task
+Flutter FE moviedb task implementing clean architecture
