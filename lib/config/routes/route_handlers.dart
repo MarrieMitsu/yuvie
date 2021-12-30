@@ -1,11 +1,10 @@
-import 'package:flutter/material.dart';
 import 'package:fluro/fluro.dart';
+import 'package:flutter/material.dart';
 
-import 'package:yuvie/constants/constants.dart';
-
-import 'package:yuvie/presentation/screens/dashboard.dart';
-import 'package:yuvie/presentation/screens/detail_movie_screen.dart';
-import 'package:yuvie/presentation/screens/movie_form_screen.dart';
+import '../../constants/constants.dart';
+import '../../presentation/screens/dashboard.dart';
+import '../../presentation/screens/detail_movie_screen.dart';
+import '../../presentation/screens/movie_form_screen.dart';
 
 
 // rootHandler

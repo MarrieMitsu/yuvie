@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 
-import 'package:yuvie/constants/constants.dart';
+import '../../constants/constants.dart';
 
-import 'package:yuvie/config/routes/application.dart';
-import 'package:yuvie/config/routes/route_handlers.dart';
+import '../../config/routes/application.dart';
+import '../../config/routes/route_handlers.dart';
 
 class Dashboard extends StatelessWidget {
   const Dashboard({ Key? key }) : super(key: key);

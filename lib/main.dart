@@ -1,8 +1,9 @@
+import 'package:fluro/fluro.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
-import 'package:fluro/fluro.dart';
-import 'package:yuvie/config/routes/application.dart';
-import 'package:yuvie/config/routes/routes.dart';
+
+import 'config/routes/application.dart';
+import 'config/routes/routes.dart';
 
 Future main() async {
   await dotenv.load(fileName: ".env");

@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
 
-import 'package:yuvie/constants/constants.dart';
-
-import 'package:yuvie/config/routes/application.dart';
+import '../../config/routes/application.dart';
+import '../../constants/constants.dart';
 
 
 // movie form screen
