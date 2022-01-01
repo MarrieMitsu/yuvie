@@ -4,9 +4,12 @@ import 'package:flutter_dotenv/flutter_dotenv.dart';
 
 import 'config/routes/application.dart';
 import 'config/routes/routes.dart';
+import 'service_locator.dart' as serviceLocator;
 
 Future main() async {
+  WidgetsFlutterBinding.ensureInitialized();
   await dotenv.load(fileName: ".env");
+  serviceLocator.init();
 
   runApp(MyApp());
 }
