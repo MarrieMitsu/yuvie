@@ -1,5 +1,6 @@
 import 'package:dio/dio.dart';
 import 'package:get_it/get_it.dart';
+import 'package:yuvie/domain/usecases/movie/get_all_local_genre.dart';
 
 import 'data/repositories/movie_repository_impl.dart';
 import 'data/services/api/api.dart';
@@ -14,6 +15,12 @@ final sl = GetIt.instance;
 // Initialize service locator
 void init() {
   // movie bloc
+  sl.registerFactory(() => TabsCubit());
+  
+  sl.registerFactory(() => LocalGenreCubit(
+    getAllLocalGenre: sl(),
+  ));
+
   sl.registerFactory(() => RemoteMovieCubit(
     searchRemoteMovies: sl(), 
     getDetailRemoteMovie: sl(),
@@ -30,6 +37,7 @@ void init() {
   // movie usecase
   sl.registerLazySingleton(() => SearchRemoteMovies(sl()));
   sl.registerLazySingleton(() => GetDetailRemoteMovie(sl()));
+  sl.registerLazySingleton(() => GetAllLocalGenre(sl()));
   sl.registerLazySingleton(() => GetAllLocalMovie(sl()));
   sl.registerLazySingleton(() => GetDetailLocalMovie(sl()));
   sl.registerLazySingleton(() => AddLocalMovie(sl()));
