@@ -1,6 +1,7 @@
 import 'package:equatable/equatable.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
+import '../../../constants/constants.dart';
 import '../../../domain/entities/genre.dart';
 import '../../../domain/usecases/movie/get_all_local_genre.dart';
 
@@ -13,17 +14,17 @@ class LocalGenreCubit extends Cubit<LocalGenreState> {
   LocalGenreCubit({
     required GetAllLocalGenre getAllLocalGenre,
   })  : _getAllLocalGenre = getAllLocalGenre,
-        super(LocalGenreInitial());
+        super(LocalGenreInitial(DBOperation.None, false));
 
   // get all local genre
-  void getAllLocalGenre() async {
-    emit(LocalGenreInitial());
+  void getAllLocalGenre({bool freshData = false}) async {
+    emit(LocalGenreLoadInProgress(DBOperation.Read, freshData));
 
     final result = await _getAllLocalGenre.execute();
 
     result.fold(
-      (err) => emit(LocalGenreLoadInProgress()), 
-      (res) => emit(LocalGenreLoadSuccess(genres: res)),
+      (err) => emit(LocalGenreLoadFailure(DBOperation.Read, freshData, 'error')), 
+      (res) => emit(LocalGenreLoadSuccess(DBOperation.Read, freshData, genres: res)),
     );
   }
 
