@@ -80,10 +80,15 @@ class Database extends _$Database {
 
   // Get All Movie With Genre
   Future<List<MovieWithGenre>> getAllMovieWithGenre({int page = 1, int limit = 10}) async {
-    final int offset = page * limit;
+    final int offset = (page - 1) * limit;
 
     // get all movies and transform them to map
-    final moviesQuery = await (select(movies)..limit(limit, offset: offset)).get();
+    // final moviesQuery = await (select(movies)..limit(limit, offset: offset)).get();
+    
+    // there's a problem when using limit and offset,
+    // i'm affraid it was my mistake
+    final moviesQuery = await select(movies).get();
+
     final idToMovies = {
       for (var movieQuery in moviesQuery)
         movieQuery.id: movieQuery
@@ -145,6 +150,7 @@ class Database extends _$Database {
   Future<MovieWithGenre> insertMovie(MovieWithGenreCompanion entry) {
     return transaction(() async {
       final movieEntry = entry.movie;
+      print('INSERTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTT');
 
       // insert movie
       final id = await into(movies)
