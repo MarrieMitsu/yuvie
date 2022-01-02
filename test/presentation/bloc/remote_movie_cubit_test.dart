@@ -1,6 +1,7 @@
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mockito/annotations.dart';
 import 'package:mockito/mockito.dart';
+import 'package:yuvie/constants/constants.dart';
 import 'package:yuvie/domain/usecases/movie/movie.dart';
 import 'package:yuvie/presentation/blocs/movie/remote_movie_cubit.dart';
 
@@ -24,7 +25,7 @@ void main() {
   });
 
   test('state should be initial', () {
-    expect(remoteMovieCubit.state, equals(RemoteMovieInitial()));
+    expect(remoteMovieCubit.state, equals(RemoteMovieInitial(APIOperation.None, false)));
   });
 
 }
