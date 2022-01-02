@@ -20,7 +20,6 @@ class DioClient {
   // interceptor
   InterceptorsWrapper _interceptor = InterceptorsWrapper(
     onRequest: (options, handler) {
-        options.headers['api_key'] = dotenv.env['API_KEY'];
         return handler.next(options);
       },
       onResponse: (response, handler) async {
